@@ -1,0 +1,17 @@
+name = "AdventOfCode2023"
+uuid = "79bfa421-b4fd-41d1-8cfd-e57d9c314976"
+authors = ["Wolf Thomsen <git@wolthom.com>"]
+version = "0.1.0"
+
+[deps]
+Accessors = "7d9f7c33-5ae7-4f3b-8dc6-eff91059b697"
+Chain = "8be319e6-bccf-4806-a6f7-6fae938471bc"
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+DotEnv = "4dc1fcf4-5e3b-5448-94ab-0c38ec0385c1"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+InlineStrings = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
+IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Missings = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
+OffsetArrays = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
