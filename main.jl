@@ -1,4 +1,4 @@
-using AdventOfCode2022
+using AdventOfCode2023
 using DotEnv
 
 cfg = DotEnv.config()

@@ -1,4 +1,4 @@
-module AdventOfCode2022
+module AdventOfCode2023
 using Reexport
 
 # ~~~~~ Utility functions
