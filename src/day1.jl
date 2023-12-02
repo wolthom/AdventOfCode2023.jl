@@ -1,14 +1,14 @@
 using Chain
 
 function parse_day1(inp_str)
-    lines = eachsplit(inp_str, "\n")
+    lines = eachsplit(inp_str, '\n')
 end
 
 function parse_digits(line, words=false)
     first_num = nothing
     second_num = nothing
     for idx in 1:length(line)
-        segment = @views line[idx:end]
+        segment = @view line[idx:end]
         digit = parse_digit(segment, words)
         isnothing(digit) && continue
 
