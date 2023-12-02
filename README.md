@@ -1,4 +1,4 @@
-# AdventOfCode2022.jl
+# AdventOfCode2023.jl
 My Julia solutions to 2023's Advent of Code
 
 ## References
