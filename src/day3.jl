@@ -2,12 +2,14 @@ function parse_day3(inp_str)
     hcat([collect(l) for l in eachsplit(inp_str, '\n')]...)
 end
 
-struct Game
-    id::Int64
-    red::Int64
-    green::Int64
-    blue::Int64
-end
+function consider_digit(neighborhood)
+    valid = false
+    for c in neighborhood
+        if c != '.' && !isdigit(c)
+            valid = true
+            break
+        end
+    end
 
 function parse_day3(inp_str)
     lines = eachsplit(inp_str, '\n')
