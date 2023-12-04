@@ -16,9 +16,9 @@ function parse_day3(inp_str)
     map(parse_game, lines)
 end
 
-function parse_game(line)
-    game_part, color_parts = IterTools.firstrest(IterTools.partition(eachsplit(line, ' '), 2))
-    id = parse(Int64, game_part[2][1:(end-1)])
+function day3_part1(inp)
+    start_idx = nothing
+    end_idx = nothing
 
     game = Game(id, 0, 0, 0)
 
