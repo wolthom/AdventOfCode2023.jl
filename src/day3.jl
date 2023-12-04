@@ -11,43 +11,42 @@ function consider_digit(neighborhood)
         end
     end
 
-function parse_day3(inp_str)
-    lines = eachsplit(inp_str, '\n')
-    map(parse_game, lines)
+    valid
 end
 
 function day3_part1(inp)
     start_idx = nothing
     end_idx = nothing
 
-    game = Game(id, 0, 0, 0)
+    digit_stack = Char[]
+    out = 0
 
-    for (num, color) in color_parts
-        num = parse(Int64, num)
-        if color[1] == 'r'
-            @reset game.red = max(num, game.red)
-        elseif color[1] == 'g'
-            @reset game.green = max(num, game.green)
-        elseif color[1] == 'b'
-            @reset game.blue = max(num, game.blue)
+    for idx in CartesianIndices(inp)
+        if isdigit(inp[idx]) && isnothing(start_idx)
+            start_idx = idx
+            end_idx = idx
+            push!(digit_stack, inp[idx])
+        elseif isdigit(inp[idx])
+            end_idx = idx
+            push!(digit_stack, inp[idx])
+        elseif !isnothing(start_idx) && !isnothing(end_idx)
+            upper_left = max(start_idx - CartesianIndex(1, 1), CartesianIndex(1, 1))
+            lower_right = min(end_idx + CartesianIndex(1, 1), CartesianIndex(size(inp)))
+
+            neighborhood = @view inp[upper_left:lower_right]
+            if consider_digit(neighborhood)
+                # TODO: Remove superfluous allocation
+                out += parse(Int, join(digit_stack))
+            end
+
+            start_idx = nothing
+            end_idx = nothing
+            empty!(digit_stack)
         end
     end
-
-    if isnothing(game.red) || isnothing(game.green) || isnothing(game.blue)
-        throw(ArgumentError("Invalid input"))
-    end
-    game
-end
-
-function isvalidgame(game, limits)
-    game.red <= limits.red && game.green <= limits.green && game.blue <= limits.blue
-end
-
-function day3_part1(inp)
-    limits = (; red=12, green=13, blue=14)
-    sum(game.id * isvalidgame(game, limits) for game in inp)
+    out
 end
 
 function day3_part2(inp)
-    sum(game.red * game.green * game.blue for game in inp)
+    nothing
 end
