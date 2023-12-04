@@ -1,4 +1,6 @@
-using Chain, Accessors, IterTools
+function parse_day3(inp_str)
+    hcat([collect(l) for l in eachsplit(inp_str, '\n')]...)
+end
 
 struct Game
     id::Int64
