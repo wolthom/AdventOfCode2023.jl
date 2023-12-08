@@ -3,15 +3,13 @@ function parse_day3(inp_str)
 end
 
 function consider_digit(neighborhood)
-    valid = false
     for c in neighborhood
         if c != '.' && !isdigit(c)
-            valid = true
-            break
+            return true
         end
     end
 
-    valid
+    false
 end
 
 function day3_part1(inp)
@@ -35,8 +33,7 @@ function day3_part1(inp)
 
             neighborhood = @view inp[upper_left:lower_right]
             if consider_digit(neighborhood)
-                # TODO: Remove superfluous allocation
-                out += parse(Int, join(digit_stack))
+                out += foldl((x, y) -> 10 * x + parse(Int, y), digit_stack, init=0)
             end
 
             start_idx = nothing
@@ -50,3 +47,4 @@ end
 function day3_part2(inp)
     nothing
 end
+
